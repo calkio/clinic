@@ -13,7 +13,10 @@ namespace clinic.Entities
         string _secondname;
         string _surname;
         int _experience;
-        int _qualification;
+
+        private int _qualification;
+        public int Qualification {get => _qualification; set => _qualification = value; }
+
         Schedule _schedule;
         int _numberOfCabinet;
 
