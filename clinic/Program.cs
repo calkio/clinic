@@ -24,7 +24,7 @@ internal class Program
         List<string> qualification = new List<string>()
         { "Терапевт", "Хирург", "Невролог", "Окулист/офтальмолог", "Травматолог", "Эндокринолог", "Стоматолог"};
 
-        for (int i = 0; i <= name.Count; i++)
+        for (int i = 0; i <= firstname.Count; i++)
         {
             Doctor doctor = new Doctor(id[i], firstname[i], secondname[i],
                 surname[i], experience[i], qualification[i]);

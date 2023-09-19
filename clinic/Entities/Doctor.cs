@@ -8,7 +8,7 @@ namespace clinic.Entities
 {
     internal class Doctor
     {
-        public Doctor(int id, string firstname, string secondname, string surname, int experience, int qualification, Schedule schedule, int numberOfCabinet)
+        public Doctor(int id, string firstname, string secondname, string surname, int experience, int qualification)
         {
             _id = id;
             _firstname = firstname;
