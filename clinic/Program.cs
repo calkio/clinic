@@ -8,9 +8,13 @@ internal class Program
     string? _selectPerson;
     bool _checkSchedule;
     int? _time;
-    int? _count;
 
     private static void Main(string[] args)
+    {
+               
+    }
+
+    private void CreateDoctor()
     {
         List<int> id = new List<int>()
         {1, 2, 3, 4, 5, 6, 7 };
@@ -26,7 +30,7 @@ internal class Program
 
         List<int> experience = new List<int>();
         Random random = new Random();
-        for (int i =1; i<=firstname.Count; i++)
+        for (int i = 1; i <= firstname.Count; i++)
             experience[i] = random.Next(0, 10);
 
         List<string> qualification = new List<string>()
@@ -36,7 +40,7 @@ internal class Program
         {
             Doctor doctor = new Doctor(id[i], firstname[i], secondname[i],
                 surname[i], experience[i], qualification[i]);
-        }        
+        }
     }
 
     private void SelectedDoctor()

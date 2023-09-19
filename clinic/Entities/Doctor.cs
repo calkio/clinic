@@ -18,12 +18,14 @@ namespace clinic.Entities
             _qualification = qualification;
         }
 
+        string _qualification;
+        public string Qualification { get => _qualification; set => _qualification = value; }
+
         int _id;
         string _firstname;
         string _secondname;
         string _surname;
         int _experience;
-        string _qualification;
         Schedule _schedule;
         int _numberOfCabinet;
 
