@@ -8,6 +8,7 @@ internal class Program
     string? _selectPerson;
     bool _checkSchedule;
     int? _time;
+    int? _count;
 
     private static void Main(string[] args)
     {
