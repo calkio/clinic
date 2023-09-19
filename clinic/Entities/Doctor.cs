@@ -8,6 +8,18 @@ namespace clinic.Entities
 {
     internal class Doctor
     {
+        public Doctor(int id, string firstname, string secondname, string surname, int experience, int qualification, Schedule schedule, int numberOfCabinet)
+        {
+            _id = id;
+            _firstname = firstname;
+            _secondname = secondname;
+            _surname = surname;
+            _experience = experience;
+            _qualification = qualification;
+            _schedule = schedule;
+            _numberOfCabinet = numberOfCabinet;
+        }
+
         int _id;
         string _firstname;
         string _secondname;
@@ -16,6 +28,5 @@ namespace clinic.Entities
         int _qualification;
         Schedule _schedule;
         int _numberOfCabinet;
-
     }
 }
