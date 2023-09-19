@@ -17,6 +17,21 @@ namespace clinic.Entities
         float _height;
         float _weight;
 
+        private int DetermineTheAge()
+        {
+            int age;
 
+            return age; 
+        }
+
+        public void SignUp()
+        {
+
+        }
+
+        public void CancelRecording()
+        {
+
+        }
     }
 }
