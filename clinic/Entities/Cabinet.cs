@@ -8,5 +8,10 @@ namespace clinic.Entities
 {
     internal class Cabinet
     {
+        public Cabinet(int count) 
+        {
+            _number = count;
+        }
+        int _number;
     }
 }
