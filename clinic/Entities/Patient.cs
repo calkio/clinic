@@ -19,7 +19,7 @@ namespace clinic.Entities
 
         private int DetermineTheAge()
         {
-            int age;
+            int age=0;
 
             return age; 
         }
