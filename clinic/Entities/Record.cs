@@ -8,5 +8,9 @@ namespace clinic.Entities
 {
     internal class Record
     {
+        Doctor _doctor;
+        Patient _patient;
+        String _time;
+        Cabinet _cabinet;
     }
 }
