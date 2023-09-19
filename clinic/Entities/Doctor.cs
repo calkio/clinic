@@ -16,8 +16,6 @@ namespace clinic.Entities
             _surname = surname;
             _experience = experience;
             _qualification = qualification;
-            _schedule = schedule;
-            _numberOfCabinet = numberOfCabinet;
         }
 
         int _id;
