@@ -12,6 +12,7 @@ namespace clinic.Entities
         {
             _number = count;
         }
+
         int _number;
     }
 }

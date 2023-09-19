@@ -10,7 +10,7 @@ namespace clinic.Entities
     {
         Doctor _doctor;
         Patient _patient;
-        String _time;
+        int _time;
         Cabinet _cabinet;
     }
 }
