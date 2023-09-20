@@ -17,6 +17,7 @@ internal class Program
         SelectedPerson();
         ShowEntry();
         SelectedTime();
+        Record _record = new Record(_doctors[0], _selectDay, _checkSchedule, _time);
     }
 
     private static void CreateDoctor()
@@ -43,8 +44,13 @@ internal class Program
 
         for (int i = 0; i < firstname.Count; i++)
         {
-            Doctor doctor = new Doctor(id[i], firstname[i], secondname[i],
-                surname[i], experience[i], qualification[i]);
+            _doctors.Add(new Doctor(id[i], firstname[i], secondname[i],
+                surname[i], experience[i], qualification[i]));
+        }
+
+        foreach (Doctor doctor in _doctors)
+        {
+            doctor.Schedule = new Schedule();
         }
     }
 
