@@ -25,6 +25,8 @@ namespace clinic.Entities
             _checkRecord = IsFreeRecord(record);
         }
 
+        #region ПРОВЕРКА НА СВОБОДНУЮ ЗАПИСЬ
+
         private bool IsFreeRecord(Record record)
         {
             switch (record.SelectDay)
@@ -43,19 +45,29 @@ namespace clinic.Entities
                     return IsFreeTime(_saturday, record.Time);
                 case "Воскресенье":
                     return IsFreeTime(_sunday, record.Time);
-                default: 
+                default:
                     return false;
             }
         }
 
         private bool IsFreeTime(List<Record> list, int? selectedTime)
         {
+            if (list.Count == 0)
+            {
+                for (int i = 0; i < 13; i++)
+                {
+                    list.Add(new Record());
+                }
+            }
+
             foreach (var item in list)
             {
                 if (item.Time == selectedTime) return false;
             }
             return true;
-        }
+        } 
+
+        #endregion
 
         public void ChangeEntry()
         {

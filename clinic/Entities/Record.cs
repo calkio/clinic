@@ -8,6 +8,23 @@ namespace clinic.Entities
 {
     internal class Record
     {
+        public Record(Doctor doctor, string? selectDay, bool checkSchedule, int? time)
+        {
+            _selectDay = selectDay;
+            _checkSchedule = checkSchedule;
+            _time = time;
+
+            _doctor = doctor;
+            _schedule = _doctor.Schedule;
+            _schedule.UpdateSchedule(this);
+        }
+
+        public Record()
+        {
+
+        }
+
+
         private string? _selectDay;
         public string? SelectDay { get => _selectDay; set => _selectDay = value; }
 
@@ -22,15 +39,6 @@ namespace clinic.Entities
         Cabinet _cabinet;
         Schedule _schedule;
 
-        public Record(Doctor doctor, string? selectDay, bool checkSchedule, int? time) 
-        {
-            _selectDay = selectDay;
-            _checkSchedule = checkSchedule;
-            _time = time;
 
-            _doctor = doctor;
-            _schedule = _doctor.Schedule;
-            _schedule.UpdateSchedule(this);
-        }
     }
 }
