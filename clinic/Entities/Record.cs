@@ -8,7 +8,7 @@ namespace clinic.Entities
 {
     internal class Record
     {
-        public Record(Doctor doctor, string? selectDay, bool checkSchedule, int? time)
+        public Record(Doctor doctor, string? selectDay, bool checkSchedule, int time)
         {
             _selectDay = selectDay;
             _checkSchedule = checkSchedule;
@@ -16,6 +16,7 @@ namespace clinic.Entities
 
             _doctor = doctor;
             _schedule = _doctor.Schedule;
+            if (_checkSchedule) _schedule.ShowEntry(this);
             _schedule.UpdateSchedule(this);
         }
 
@@ -28,8 +29,8 @@ namespace clinic.Entities
         private string? _selectDay;
         public string? SelectDay { get => _selectDay; set => _selectDay = value; }
 
-        private int? _time;
-        public int? Time { get => _time; set => _time = value; }
+        private int _time;
+        public int Time { get => _time; set => _time = value; }
 
 
         bool _checkSchedule;

@@ -7,17 +7,20 @@ internal class Program
     static string? _selectDay;
     static string? _selectPerson;
     static bool _checkSchedule;
-    static int? _time;
+    static int _time;
 
     private static void Main(string[] args)
     {
         CreateDoctors();
-        SelectedDoctor();
-        SelectedDay();
-        SelectedPerson();
-        ShowEntry();
-        SelectedTime();
-        Record _record = new Record(_doctors[0], _selectDay, _checkSchedule, _time);
+        while (true)
+        {
+            SelectedDoctor();
+            SelectedDay();
+            SelectedPerson();
+            ShowEntry();
+            SelectedTime();
+            Record _record = new Record(_doctors[0], _selectDay, _checkSchedule, _time); 
+        }
     }
 
     private static void CreateDoctors()

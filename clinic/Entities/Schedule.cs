@@ -8,7 +8,9 @@ namespace clinic.Entities
 {
     internal class Schedule
     {
-        Day _day;
+        // Хотели сделать реализацию: 
+        // Перенести все листы в класс Day, чтобы вызывать экземпляр дня, но хз как проверять dict
+        List<Day> _day = new List<Day>(7);
         List<Record> _monday = new List<Record>(13);
         List<Record> _tuesday = new List<Record>(13);
         List<Record> _wednesday = new List<Record>(13);
@@ -22,7 +24,10 @@ namespace clinic.Entities
         public void UpdateSchedule(Record record)
         {
             _checkRecord = IsFreeRecord(record);
-            if (_checkRecord) AddRecord(record);
+            if (_checkRecord)
+            {
+                AddRecord(record);
+            }
             else Console.WriteLine("Это время занято");
         }
 
@@ -48,13 +53,43 @@ namespace clinic.Entities
                     throw new NotImplementedException();
             }
         }
+        
 
         #region ДОБАВЛЕНИЕ ЗАПИСИ
 
         private void AddRecord(Record record)
         {
             PickDay(record).Add(record);
-        } 
+            UpdateDay(PickIndexDay(record), record.Time);
+        }
+
+        private int PickIndexDay(Record record)
+        {
+            switch (record.SelectDay)
+            {
+                case "Понедельник":
+                    return 0;
+                case "Вторник":
+                    return 1;
+                case "Среда":
+                    return 2;
+                case "Четверг":
+                    return 3;
+                case "Пятница":
+                    return 4;
+                case "Суббота":
+                    return 5;
+                case "Воскресенье":
+                    return 6;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        private void UpdateDay(int indexDay, int time)
+        {
+            _day[indexDay].TimeReceipt[time] = true;
+        }
 
         #endregion
 
@@ -71,9 +106,14 @@ namespace clinic.Entities
 
         #endregion
 
-        public void ShowEntry()
+        public void ShowEntry(Record record)
         {
+            if (_day.Count == 0) _day.Add(new Day());
 
+            foreach (var time in _day[PickIndexDay(record)].TimeReceipt)
+            {
+                if (!time.Value) Console.WriteLine(time.Key + "\t" + "Это время свободно");
+            }
         }
     }
 }
