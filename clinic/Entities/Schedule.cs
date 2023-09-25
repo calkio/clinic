@@ -24,10 +24,7 @@ namespace clinic.Entities
         public void UpdateSchedule(Record record)
         {
             _checkRecord = IsFreeRecord(record);
-            if (_checkRecord)
-            {
-                AddRecord(record);
-            }
+            if (_checkRecord) AddRecord(record);
             else Console.WriteLine("Это время занято");
         }
 
