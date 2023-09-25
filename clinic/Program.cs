@@ -11,7 +11,7 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        CreateDoctor();
+        CreateDoctors();
         SelectedDoctor();
         SelectedDay();
         SelectedPerson();
@@ -20,7 +20,7 @@ internal class Program
         Record _record = new Record(_doctors[0], _selectDay, _checkSchedule, _time);
     }
 
-    private static void CreateDoctor()
+    private static void CreateDoctors()
     {
         List<int> id = new List<int>()
         {1, 2, 3, 4, 5, 6, 7 };
@@ -73,7 +73,7 @@ internal class Program
 
     private static void SelectedPerson()
     {
-        Console.WriteLine("К какому доткору вы хотите записаться ?");
+        Console.WriteLine("К какому доктору вы хотите записаться ?");
         _selectPerson = Console.ReadLine();
     }
 

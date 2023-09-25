@@ -38,7 +38,5 @@ namespace clinic.Entities
         Patient _patient;
         Cabinet _cabinet;
         Schedule _schedule;
-
-
     }
 }

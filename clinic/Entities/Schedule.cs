@@ -19,60 +19,57 @@ namespace clinic.Entities
         Doctor _doctor;
         bool _checkRecord;
 
-
         public void UpdateSchedule(Record record)
         {
             _checkRecord = IsFreeRecord(record);
+            if (_checkRecord) AddRecord(record);
+            else Console.WriteLine("Это время занято");
         }
+
+        private List<Record> PickDay(Record record)
+        {
+            switch (record.SelectDay)
+            {
+                case "Понедельник":
+                    return _monday;
+                case "Вторник":
+                    return _tuesday;
+                case "Среда":
+                    return _wednesday;
+                case "Четверг":
+                    return _thursday;
+                case "Пятница":
+                    return _friday;
+                case "Суббота":
+                    return _saturday;
+                case "Воскресенье":
+                    return _sunday;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        #region ДОБАВЛЕНИЕ ЗАПИСИ
+
+        private void AddRecord(Record record)
+        {
+            PickDay(record).Add(record);
+        } 
+
+        #endregion
 
         #region ПРОВЕРКА НА СВОБОДНУЮ ЗАПИСЬ
 
         private bool IsFreeRecord(Record record)
         {
-            switch (record.SelectDay)
+            foreach (var item in PickDay(record))
             {
-                case "Понедельник":
-                    return IsFreeTime(_monday, record.Time);
-                case "Вторник":
-                    return IsFreeTime(_tuesday, record.Time);
-                case "Среда":
-                    return IsFreeTime(_wednesday, record.Time);
-                case "Четверг":
-                    return IsFreeTime(_thursday, record.Time);
-                case "Пятница":
-                    return IsFreeTime(_friday, record.Time);
-                case "Суббота":
-                    return IsFreeTime(_saturday, record.Time);
-                case "Воскресенье":
-                    return IsFreeTime(_sunday, record.Time);
-                default:
-                    return false;
-            }
-        }
-
-        private bool IsFreeTime(List<Record> list, int? selectedTime)
-        {
-            if (list.Count == 0)
-            {
-                for (int i = 0; i < 13; i++)
-                {
-                    list.Add(new Record());
-                }
-            }
-
-            foreach (var item in list)
-            {
-                if (item.Time == selectedTime) return false;
+                if (item.Time == record.Time) return false;
             }
             return true;
         } 
 
         #endregion
-
-        public void ChangeEntry()
-        {
-
-        }
 
         public void ShowEntry()
         {

@@ -18,7 +18,7 @@ namespace clinic.Entities
             _qualification = qualification;
         }
 
-        string _qualification;
+        private string _qualification;
         public string Qualification { get => _qualification; set => _qualification = value; }
 
         private Schedule _schedule;
