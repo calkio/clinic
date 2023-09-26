@@ -13,9 +13,8 @@ internal class Program
     private static void Main(string[] args)
     {
         Program program = new Program();
-        Generator generator = new Generator("D:\\dev\\texnologi\\clinic\\clinic\\data\\Doctors.txt");
+        Generator generator = new Generator();
         generator.GenerateDoctors();
-        program.CreateDoctors(program);
         while (true)
         {
             program.SelectedDoctor(program);
@@ -27,39 +26,6 @@ internal class Program
         }
     }
 
-    private void CreateDoctors(Program program)
-    {
-        List<int> id = new List<int>()
-        {1, 2, 3, 4, 5, 6, 7 };
-
-        List<string> firstname = new List<string>()
-        { "Иван", "Максим", "Алексей", "Кирилл", "Мефодий", "Мария", "Анастасия"};
-
-        List<string> secondname = new List<string>()
-        { "Иванов", "Смирнов", "Кузнецов", "Попов", "Васильев", "Петрова", "Соколова"};
-
-        List<string> surname = new List<string>()
-        {"Альбертович", "Богданович", "Вадимович", "Викториевич", "Демьянович", "Евдокимовна", "Исаевна"};
-
-        List<int> experience = new List<int>();
-        Random random = new Random();
-        for (int i = 1; i <= firstname.Count; i++)
-            experience.Add(random.Next(0, 10));
-
-        List<string> qualification = new List<string>()
-        { "Терапевт", "Хирург", "Невролог", "Окулист/офтальмолог", "Травматолог", "Эндокринолог", "Стоматолог"};
-
-        for (int i = 0; i < firstname.Count; i++)
-        {
-            program._doctors.Add(new Doctor(id[i], firstname[i], secondname[i],
-                surname[i], experience[i], qualification[i]));
-        }
-
-        foreach (Doctor doctor in program._doctors)
-        {
-            doctor.Schedule = new Schedule();
-        }
-    }
 
     private void SelectedDoctor(Program program)
     {

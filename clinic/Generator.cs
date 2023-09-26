@@ -10,13 +10,8 @@ namespace clinic
 {
     internal class Generator
     {
-        private string _pathFile;
+        private string _pathFile = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Doctors.txt");
         private List<Doctor> _doctors = new List<Doctor>();
-
-        public Generator(string pathFile)
-        {
-            _pathFile = pathFile;
-        }
 
         public void GenerateDoctors()
         {
