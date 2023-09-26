@@ -28,6 +28,18 @@ namespace clinic.Entities
             else Console.WriteLine("Это время занято");
         }
 
+        public void ShowEntry(Record record)
+        {
+            InciliationDayList();
+
+            foreach (var time in _day[PickIndexDay(record)].TimeReceipt)
+            {
+                if (!time.Value) Console.WriteLine(time.Key + "\t" + "Это время свободно");
+            }
+        }
+
+        #region ОБЩИЕ МЕТОДЫ
+
         private List<Record> PickDay(Record record)
         {
             switch (record.SelectDay)
@@ -50,15 +62,7 @@ namespace clinic.Entities
                     throw new NotImplementedException();
             }
         }
-        
 
-        #region ДОБАВЛЕНИЕ ЗАПИСИ
-
-        private void AddRecord(Record record)
-        {
-            PickDay(record).Add(record);
-            UpdateDay(PickIndexDay(record), record.Time);
-        }
 
         private int PickIndexDay(Record record)
         {
@@ -83,19 +87,30 @@ namespace clinic.Entities
             }
         }
 
-        private void UpdateDay(int indexDay, int time)
-        {
-            InciliationDayList();
-
-            _day[indexDay].TimeReceipt[time] = true;
-        }
-
         private void InciliationDayList()
         {
             if (_day.Count == 0)
             {
                 for (int i = 0; i < 7; i++) _day.Add(new Day());
             }
+        }
+
+        #endregion
+
+        #region ДОБАВЛЕНИЕ ЗАПИСИ
+
+        private void AddRecord(Record record)
+        {
+            PickDay(record).Add(record);
+            UpdateDay(PickIndexDay(record), record.Time);
+        }
+
+
+        private void UpdateDay(int indexDay, int time)
+        {
+            InciliationDayList();
+
+            _day[indexDay].TimeReceipt[time] = true;
         }
 
         #endregion
@@ -113,14 +128,5 @@ namespace clinic.Entities
 
         #endregion
 
-        public void ShowEntry(Record record)
-        {
-            InciliationDayList();
-
-            foreach (var time in _day[PickIndexDay(record)].TimeReceipt)
-            {
-                if (!time.Value) Console.WriteLine(time.Key + "\t" + "Это время свободно");
-            }
-        }
     }
 }
