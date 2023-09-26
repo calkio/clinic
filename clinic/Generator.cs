@@ -10,14 +10,14 @@ namespace clinic
     internal class Generator
     {
         private string _pathFile;
-        private List<Doctor> _doctors;
+        private List<Doctor> _doctors = new List<Doctor>();
 
         public Generator(string pathFile)
         {
             _pathFile = pathFile;
         }
 
-        private void GenerateDoctors()
+        public void GenerateDoctors()
         {
             StreamReader sr = new StreamReader(_pathFile);
 
@@ -40,6 +40,14 @@ namespace clinic
             int _experience = int.Parse(options[5]);
 
             return new Doctor(id, _firstname, _secondname, _surname, _experience, qualification);
+        }
+
+        public void ShowDoctors()
+        {
+            foreach (var doctor in _doctors)
+            {
+                Console.WriteLine(doctor.Qualification);
+            }
         }
     }
 }

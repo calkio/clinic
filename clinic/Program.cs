@@ -1,4 +1,5 @@
-﻿using clinic.Entities;
+﻿using clinic;
+using clinic.Entities;
 
 internal class Program
 {
@@ -12,6 +13,9 @@ internal class Program
     private static void Main(string[] args)
     {
         Program program = new Program();
+        Generator generator = new Generator("D:\\dev\\texnologi\\clinic\\clinic\\data\\Doctors.txt");
+        generator.GenerateDoctors();
+        generator.ShowDoctors();
         program.CreateDoctors(program);
         while (true)
         {
