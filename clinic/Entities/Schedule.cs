@@ -85,7 +85,17 @@ namespace clinic.Entities
 
         private void UpdateDay(int indexDay, int time)
         {
+            InciliationDayList();
+
             _day[indexDay].TimeReceipt[time] = true;
+        }
+
+        private void InciliationDayList()
+        {
+            if (_day.Count == 0)
+            {
+                for (int i = 0; i < 7; i++) _day.Add(new Day());
+            }
         }
 
         #endregion
@@ -105,7 +115,7 @@ namespace clinic.Entities
 
         public void ShowEntry(Record record)
         {
-            if (_day.Count == 0) _day.Add(new Day());
+            InciliationDayList();
 
             foreach (var time in _day[PickIndexDay(record)].TimeReceipt)
             {

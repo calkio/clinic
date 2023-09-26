@@ -2,28 +2,29 @@
 
 internal class Program
 {
-    static List<Doctor> _doctors = new List<Doctor>();
-    static string? _selectDoctor;
-    static string? _selectDay;
-    static string? _selectPerson;
-    static bool _checkSchedule;
-    static int _time;
+    List<Doctor> _doctors = new List<Doctor>();
+    string? _selectDoctor;
+    string? _selectDay;
+    string? _selectPerson;
+    bool _checkSchedule;
+    int _time;
 
     private static void Main(string[] args)
     {
-        CreateDoctors();
+        Program program = new Program();
+        program.CreateDoctors(program);
         while (true)
         {
-            SelectedDoctor();
-            SelectedDay();
-            SelectedPerson();
-            ShowEntry();
-            SelectedTime();
-            Record _record = new Record(_doctors[0], _selectDay, _checkSchedule, _time); 
+            program.SelectedDoctor(program);
+            program.SelectedDay(program);
+            program.SelectedPerson(program);
+            program.ShowEntry(program);
+            program.SelectedTime(program);
+            Record _record = new Record(program._doctors[0], program._selectDay, program._checkSchedule, program._time); 
         }
     }
 
-    private static void CreateDoctors()
+    private void CreateDoctors(Program program)
     {
         List<int> id = new List<int>()
         {1, 2, 3, 4, 5, 6, 7 };
@@ -47,40 +48,40 @@ internal class Program
 
         for (int i = 0; i < firstname.Count; i++)
         {
-            _doctors.Add(new Doctor(id[i], firstname[i], secondname[i],
+            program._doctors.Add(new Doctor(id[i], firstname[i], secondname[i],
                 surname[i], experience[i], qualification[i]));
         }
 
-        foreach (Doctor doctor in _doctors)
+        foreach (Doctor doctor in program._doctors)
         {
             doctor.Schedule = new Schedule();
         }
     }
 
-    private static void SelectedDoctor()
+    private void SelectedDoctor(Program program)
     {
         Console.WriteLine("К какому специалисту вы хотите записаться ?");
-        foreach (Doctor doctor in _doctors)
+        foreach (Doctor doctor in program._doctors)
         {
             Console.WriteLine(doctor.Qualification.ToString());
         }
 
-        _selectDoctor = Console.ReadLine(); 
+        program._selectDoctor = Console.ReadLine(); 
     }
 
-    private static void SelectedDay()
+    private void SelectedDay(Program program)
     {
         Console.WriteLine("На какой день недели вы хотите записаться ?");
-        _selectDay = Console.ReadLine();
+        program._selectDay = Console.ReadLine();
     }
 
-    private static void SelectedPerson()
+    private void SelectedPerson(Program program)
     {
         Console.WriteLine("К какому доктору вы хотите записаться ?");
-        _selectPerson = Console.ReadLine();
+        program._selectPerson = Console.ReadLine();
     }
 
-    private static void ShowEntry()
+    private void ShowEntry(Program program)
     {
         Console.WriteLine("Вы хотите посмотреть свободное время ? Если да, то нажмите 1, если нет, то нажмите 2");
         string? str = Console.ReadLine();
@@ -89,13 +90,13 @@ internal class Program
             Console.WriteLine("Вы ввели не ту команду, введите 1 или 2.");
             str = Console.ReadLine();
         }
-        if (str == "1") _checkSchedule = true;
-        else _checkSchedule = false;
+        if (str == "1") program._checkSchedule = true;
+        else program._checkSchedule = false;
     }
 
-    private static void SelectedTime() 
+    private void SelectedTime(Program program) 
     {
         Console.WriteLine("На какое время вы хотите записаться");
-        _time = int.Parse(Console.ReadLine());
+        program._time = int.Parse(Console.ReadLine());
     }
 }
