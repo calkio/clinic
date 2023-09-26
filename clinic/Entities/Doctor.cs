@@ -30,6 +30,5 @@ namespace clinic.Entities
         string _surname;
         int _experience;
         int _numberOfCabinet;
-
     }
 }
