@@ -15,7 +15,6 @@ internal class Program
         Program program = new Program();
         Generator generator = new Generator("D:\\dev\\texnologi\\clinic\\clinic\\data\\Doctors.txt");
         generator.GenerateDoctors();
-        generator.ShowDoctors();
         program.CreateDoctors(program);
         while (true)
         {

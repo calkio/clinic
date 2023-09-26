@@ -1,6 +1,7 @@
 ﻿using clinic.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,35 +20,31 @@ namespace clinic
 
         public void GenerateDoctors()
         {
-            StreamReader sr = new StreamReader(_pathFile);
-
-            List<string> options = new List<string>();
-            string[] line = sr.ReadLine().Split(' ');
-            while (line != null)
+            using (StreamReader reader = new StreamReader(_pathFile))
             {
-                foreach (string word in line) options.Add(word);
-                _doctors.Add(CreateDoctor(options));
+                string? line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    List<string> options = new List<string>();
+                    string[] str = line.Split(' ');
+                    foreach (string word in str) options.Add(word);
+
+                    _doctors.Add(CreateDoctor(options));
+                    options.Clear();
+                }
             }
         }
 
         private Doctor CreateDoctor(List<string> options)
         {
             int id = int.Parse(options[0]);
-            string _firstname = options[1];
-            string _secondname = options[2];
+            string _firstname = options[2];
+            string _secondname = options[1];
             string _surname = options[3];
             string qualification = options[4];
             int _experience = int.Parse(options[5]);
 
             return new Doctor(id, _firstname, _secondname, _surname, _experience, qualification);
-        }
-
-        public void ShowDoctors()
-        {
-            foreach (var doctor in _doctors)
-            {
-                Console.WriteLine(doctor.Qualification);
-            }
         }
     }
 }
