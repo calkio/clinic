@@ -19,19 +19,30 @@ namespace clinic.Entities
             new DaySchedule("Воскресенье")
         };
 
+        public List<string> GetFreeTimeForDayWeek(string selectedDayWeek)
+        {
+            DaySchedule dayWeek = DefineDayInWeek(selectedDayWeek);
+            return dayWeek.GetFreeTime();
+        }
 
         public void AddRecordInDay(Record record)
         {
-            var day = DefineDayInWeek(record);
-            if (day.IsRecordNull(record.Time))
+            DaySchedule dayWeek = DefineDayInWeek(record);
+
+            if (dayWeek.IsRecordNull(record.Time))
             {
-                day.AddRecord(record.Time, record);
+                dayWeek.AddRecord(record.Time, record);
             }
         }
 
         private DaySchedule DefineDayInWeek(Record record)
         {
             return weekSchedule.First(x => x.DayName == record.MyDay);
+        }
+
+        private DaySchedule DefineDayInWeek(string selectedDayWeek)
+        {
+            return weekSchedule.First(x => x.DayName == selectedDayWeek);
         }
     }
 }

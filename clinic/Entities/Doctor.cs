@@ -14,7 +14,7 @@ namespace clinic.Entities
         private Schedule _schedule;
         public Schedule Schedule { get => _schedule; set => _schedule = value; }
 
-        public string FullName { get => _firstname + " " + _secondname + " " + _surname; }
+        public string FullName { get => $"{_firstname} {_secondname} {_surname}"; }
 
         int _id;
         string _firstname;

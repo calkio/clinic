@@ -45,5 +45,14 @@ namespace clinic.Entities
             return false;
         }
 
+
+        public List<string> GetFreeTime()
+        {
+            return timeReceipt.
+                   Where(x => x.Value == null).
+                   Select(x => x.Key.ToString()).
+                   ToList();
+        }
+
     }
 }
