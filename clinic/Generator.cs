@@ -11,7 +11,7 @@ namespace clinic
     internal class Generator
     {
         private string _pathFile = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data\\Doctors.txt");
-        private List<Doctor> _doctors = new List<Doctor>();
+        public List<Doctor> doctors = new List<Doctor>();
 
         public void GenerateDoctors()
         {
@@ -24,7 +24,7 @@ namespace clinic
                     string[] str = line.Split(' ');
                     foreach (string word in str) options.Add(word);
 
-                    _doctors.Add(CreateDoctor(options));
+                    doctors.Add(CreateDoctor(options));
                     options.Clear();
                 }
             }

@@ -15,6 +15,7 @@ internal class Program
         Program program = new Program();
         Generator generator = new Generator();
         generator.GenerateDoctors();
+        program._doctors = generator.doctors;
         while (true)
         {
             program.SelectedDoctor(program);
@@ -22,7 +23,7 @@ internal class Program
             program.SelectedPerson(program);
             program.ShowEntry(program);
             program.SelectedTime(program);
-            Record _record = new Record(program._doctors[0], program._selectDay, program._checkSchedule, program._time); 
+            Record _record = new Record(program._doctors[0], program._selectDay, program._time); 
         }
     }
 
