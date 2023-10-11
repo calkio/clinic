@@ -8,30 +8,30 @@ namespace clinic.Entities
 {
     internal class Schedule
     {
-        Day _day;
-        List<Record> _monday;
-        List<Record> _tuesday;
-        List<Record> _wednesday;
-        List<Record> _thursday;
-        List<Record> _friday;
-        List<Record> _saturday;
-        List<Record> _sunday;
-        Doctor _doctor;
-
-
-        private void UpdateSchedule()
+        private List<DaySchedule> weekSchedule = new List<DaySchedule>
         {
+            new DaySchedule("Понедельник"),
+            new DaySchedule("Вторник"),   
+            new DaySchedule("Среда"),   
+            new DaySchedule("Четверг"),   
+            new DaySchedule("Пятница"),   
+            new DaySchedule("Суббота"),
+            new DaySchedule("Воскресенье")
+        };
 
+
+        public void AddRecordInDay(Record record)
+        {
+            var day = DefineDayInWeek(record);
+            if (day.IsRecordNull(record.Time))
+            {
+                day.AddRecord(record.Time, record);
+            }
         }
 
-        public void ChangeEntry()
+        private DaySchedule DefineDayInWeek(Record record)
         {
-
-        }
-
-        public void ShowEntry()
-        {
-
+            return weekSchedule.First(x => x.DayName == record.MyDay);
         }
     }
 }
