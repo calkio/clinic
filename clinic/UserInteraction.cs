@@ -18,8 +18,9 @@ namespace clinic
 
         public UserInteraction()
         {
-            SortDoctors sortDoctors = new SortDoctors(_doctors);
             GenerateDoctors();
+            SortDoctors sortDoctors = new SortDoctors(_doctors);
+
             while (true)
             {
                 SelectedQualification(sortDoctors);
