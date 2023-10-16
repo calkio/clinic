@@ -12,14 +12,11 @@ namespace clinic
         MyConsole console;
         List<Doctor> _doctors = new List<Doctor>();
 
-        public UserInteraction()
+        public UserInteraction(string pathFile)
         {
-            GenerateDoctors();
+            GenerateDoctors(pathFile);
             InitExemplar();
-            while (true)
-            {
-                Launch(); 
-            }
+            Launch();
         }
 
         private void InitExemplar()
@@ -28,21 +25,24 @@ namespace clinic
             console = new MyConsole(sortDoctors);
         }
 
-        private void GenerateDoctors() 
+        private void GenerateDoctors(string pathFile) 
         {
-            Generator generator = new Generator();
+            Generator generator = new Generator(pathFile);
             generator.GenerateDoctors();
             _doctors = generator.doctors;
         }
 
         private void Launch()
         {
-            console.SelectedQualification();
-            console.SelectedPerson();
-            console.SetDoctor();
-            console.SelectedDayWeek();
-            console.SelectedTime();
-            console.SetRecord();
+            while (true)
+            {
+                console.SelectedQualification();
+                console.SelectedPerson();
+                console.SetDoctor();
+                console.SelectedDayWeek();
+                console.SelectedTime();
+                console.SetRecord(); 
+            }
         }
     }
 }

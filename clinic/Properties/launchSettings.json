@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "clinic": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\dev\\texnologi\\clinic\\clinic\\data\\Doctors.txt"
+    }
+  }
+}
