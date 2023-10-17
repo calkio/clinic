@@ -29,7 +29,7 @@ namespace clinic.Entities
         {
             DaySchedule dayWeek = DefineDayInWeek(record);
 
-            if (dayWeek.IsRecordNull(record.Time))
+            if (dayWeek.IsFreeTime(record.Time))
             {
                 dayWeek.AddRecord(record.Time, record);
             }

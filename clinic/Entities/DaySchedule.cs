@@ -39,7 +39,7 @@ namespace clinic.Entities
             timeReceipt[time] = record;
         }
 
-        public bool IsRecordNull(int time)
+        public bool IsFreeTime(int time)
         {
             if (timeReceipt[time] == null) return true;
             return false;
