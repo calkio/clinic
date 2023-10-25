@@ -10,16 +10,16 @@ namespace clinic.Entities
     {
         private List<DaySchedule> weekSchedule = new List<DaySchedule>
         {
-            new DaySchedule("Понедельник"),
-            new DaySchedule("Вторник"),   
-            new DaySchedule("Среда"),   
-            new DaySchedule("Четверг"),   
-            new DaySchedule("Пятница"),   
-            new DaySchedule("Суббота"),
-            new DaySchedule("Воскресенье")
+            new DaySchedule(1),
+            new DaySchedule(2),   
+            new DaySchedule(3),   
+            new DaySchedule(4),   
+            new DaySchedule(5),   
+            new DaySchedule(6),
+            new DaySchedule(7)
         };
 
-        public List<string> GetFreeTimeForDayWeek(string selectedDayWeek)
+        public List<string> GetFreeTimeForDayWeek(int? selectedDayWeek)
         {
             DaySchedule dayWeek = DefineDayInWeek(selectedDayWeek);
             return dayWeek.GetFreeTime();
@@ -37,12 +37,12 @@ namespace clinic.Entities
 
         private DaySchedule DefineDayInWeek(Record record)
         {
-            return weekSchedule.First(x => x.DayName == record.MyDay);
+            return weekSchedule.First(x => x.DayNumber == record.MyDay);
         }
 
-        private DaySchedule DefineDayInWeek(string selectedDayWeek)
+        private DaySchedule DefineDayInWeek(int? selectedDayWeek)
         {
-            return weekSchedule.First(x => x.DayName == selectedDayWeek);
+            return weekSchedule.First(x => x.DayNumber == selectedDayWeek);
         }
     }
 }

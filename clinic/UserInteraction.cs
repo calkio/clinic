@@ -9,20 +9,19 @@ namespace clinic
 {
     internal class UserInteraction
     {
-        MyConsole console;
         List<Doctor> _doctors = new List<Doctor>();
 
         public UserInteraction(string pathFile)
         {
             GenerateDoctors(pathFile);
-            InitExemplar();
-            Launch();
+            SortDoctors sortDoctors = InitExemplar();
+            Launch(sortDoctors);
         }
 
-        private void InitExemplar()
+        private SortDoctors InitExemplar()
         {
             SortDoctors sortDoctors = new SortDoctors(_doctors);
-            console = new MyConsole(sortDoctors);
+            return sortDoctors;
         }
 
         private void GenerateDoctors(string pathFile) 
@@ -32,17 +31,10 @@ namespace clinic
             _doctors = generator.doctors;
         }
 
-        private void Launch()
+        private void Launch(SortDoctors sortDoctors)
         {
-            while (true)
-            {
-                console.SelectedQualification();
-                console.SelectedPerson();
-                console.SetDoctor();
-                console.SelectedDayWeek();
-                console.SelectedTime();
-                console.SetRecord(); 
-            }
+            MyConsole myConsole = new MyConsole(sortDoctors);
+            myConsole.SelectParams();
         }
     }
 }

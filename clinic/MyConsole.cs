@@ -9,17 +9,29 @@ namespace clinic
 {
     internal class MyConsole
     {
-        public string? _qualificationDoctor;
-        public string? _dayWeek;
-        public string? _person;
-        public Doctor _doctor;
-        public int _time;
-        public Record _record;
+        private string? _qualificationDoctor;
+        private int? _dayWeek;
+        private string? _person;
+        private Doctor _doctor;
+        private int _time;
         private SortDoctors _sortDoctors;
 
         public MyConsole(SortDoctors sortDoctors)
         {
             _sortDoctors = sortDoctors;
+        }
+
+        public void SelectParams()
+        {
+            while (true)
+            {
+                SelectedQualification();
+                SelectedPerson();
+                SetDoctor();
+                SelectedDayWeek();
+                SelectedTime();
+                SetRecord();
+            }
         }
 
         #region ВЫВОД СООБЩЕНИЙ
@@ -31,7 +43,7 @@ namespace clinic
 
         private void PrintMessageDayWeek()
         {
-            Console.WriteLine("На какой день недели вы хотите записаться ?");
+            Console.WriteLine("На какой день недели вы хотите записаться (1,2,3,4,5,6,7) ?");
         }
 
         private void PrintMessagePerson()
@@ -53,35 +65,34 @@ namespace clinic
 
         #region СЕТАРЫ
 
-        public void SetRecord()
+        private void SetRecord()
         {
-            _record = new Record(_doctor, _dayWeek, _time);
+            var record = new Record(_doctor, _dayWeek, _time);
         }
 
-        public void SetDoctor()
+        private void SetDoctor()
         {
             _doctor = _sortDoctors.GetDoctor(_person);
         }
 
-        public void SetQualification()
+        private void SetQualification()
         {
             _qualificationDoctor = Console.ReadLine();
         }
 
-        public void SetDayWeek()
+        private void SetDayWeek()
         {
-            _dayWeek = Console.ReadLine();
+            _dayWeek = int.Parse(Console.ReadLine());
         }
 
-        public void SetPerson()
+        private void SetPerson()
         {
             _person = Console.ReadLine();
         }
 
-        public void SetTime()
+        private void SetTime()
         {
             _time = int.Parse(Console.ReadLine());
-
         }
 
         #endregion
@@ -90,7 +101,7 @@ namespace clinic
 
         #region Qualification
 
-        public void SelectedQualification()
+        private void SelectedQualification()
         {
             PrintMessageQualification();
             PrintQualifications();
@@ -110,7 +121,7 @@ namespace clinic
 
         #region DayWeek
 
-        public void SelectedDayWeek()
+        private void SelectedDayWeek()
         {
             PrintMessageDayWeek();
             SetDayWeek();
@@ -120,7 +131,7 @@ namespace clinic
 
         #region Person
 
-        public void SelectedPerson()
+        private void SelectedPerson()
         {
             PrintMessagePerson();
             PrintNameDoctors();
@@ -140,7 +151,7 @@ namespace clinic
 
         #region Time
 
-        public void SelectedTime()
+        private void SelectedTime()
         {
             PrintMessageTime();
             PrintFreeTime();

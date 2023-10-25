@@ -8,7 +8,7 @@ namespace clinic.Entities
 {
     internal class DaySchedule
     {
-        public string DayName { get; }
+        public int DayNumber { get; }
 
         private Dictionary<int, Record> timeReceipt = new Dictionary<int, Record>()
         {
@@ -27,9 +27,9 @@ namespace clinic.Entities
             { 20, null},
         };
 
-        public DaySchedule(string dayName)
+        public DaySchedule(int dayNumber)
         {
-            DayName = dayName;
+            DayNumber = dayNumber;
         }
 
 
