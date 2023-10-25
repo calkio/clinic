@@ -8,8 +8,8 @@ namespace clinic.Entities
 {
     internal class Record
     {
-        private int? _day;
-        public int? MyDay { get => _day; set => _day = value; }
+        private int _day;
+        public int MyDay { get => _day; set => _day = value; }
 
         private int _time;
         public int Time { get => _time; set => _time = value; }
@@ -18,7 +18,7 @@ namespace clinic.Entities
         public Doctor MyDoctor { get => _doctor; set => _doctor = value; }
 
 
-        public Record(Doctor doctor, int? selectDay, int time)
+        public Record(Doctor doctor, int selectDay, int time)
         {
             _day = selectDay;
             _time = time;

@@ -19,7 +19,7 @@ namespace clinic.Entities
             new DaySchedule(7)
         };
 
-        public List<string> GetFreeTimeForDayWeek(int? selectedDayWeek)
+        public List<string> GetFreeTimeForDayWeek(int selectedDayWeek)
         {
             DaySchedule dayWeek = DefineDayInWeek(selectedDayWeek);
             return dayWeek.GetFreeTime();
@@ -40,7 +40,7 @@ namespace clinic.Entities
             return weekSchedule.First(x => x.DayNumber == record.MyDay);
         }
 
-        private DaySchedule DefineDayInWeek(int? selectedDayWeek)
+        private DaySchedule DefineDayInWeek(int selectedDayWeek)
         {
             return weekSchedule.First(x => x.DayNumber == selectedDayWeek);
         }
