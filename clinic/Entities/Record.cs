@@ -8,23 +8,18 @@ namespace clinic.Entities
 {
     internal class Record
     {
-        private int _day;
-        public int MyDay { get => _day; set => _day = value; }
-
-        private int _time;
-        public int Time { get => _time; set => _time = value; }
-
-        private Doctor _doctor;
-        public Doctor MyDoctor { get => _doctor; set => _doctor = value; }
+        public int MyDay { get; set; }
+        public int Time { get; set; }
+        public Doctor MyDoctor { get; set; }
 
 
         public Record(Doctor doctor, int selectDay, int time)
         {
-            _day = selectDay;
-            _time = time;
+            MyDay = selectDay;
+            Time = time;
 
-            _doctor = doctor;
-            _doctor.Schedule.AddRecordInDay(this);
+            MyDoctor = doctor;
+            MyDoctor.Schedule.AddRecordInDay(this);
         }
 
         public Record()
