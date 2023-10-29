@@ -1,14 +1,8 @@
-﻿using clinic.Entities;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BusinessLogic;
 
 namespace clinic
 {
-    internal class Generator
+    public class Generator
     {
         //private string _pathFile = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data\\Doctors.txt");
         private string _pathFile;

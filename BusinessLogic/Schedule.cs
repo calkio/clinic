@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    internal class Schedule
+    public class Schedule
     {
         private List<DaySchedule> weekSchedule = new List<DaySchedule>
         {

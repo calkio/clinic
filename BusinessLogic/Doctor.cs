@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    internal class Doctor
+    public class Doctor
     {
         private string _qualification;
         public string Qualification { get => _qualification; set => _qualification = value; }

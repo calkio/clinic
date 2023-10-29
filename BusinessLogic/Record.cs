@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    internal class Record
+    public class Record
     {
         private int _day;
         public int MyDay { get => _day; set => _day = value; }

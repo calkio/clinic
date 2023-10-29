@@ -2,7 +2,7 @@
   "profiles": {
     "clinic": {
       "commandName": "Project",
-      "commandLineArgs": "D:\\dev\\texnologi\\clinic\\clinic\\data\\Doctors.txt"
+      "commandLineArgs": "D:\\dev\\texnologi\\clinic\\ActionData\\data\\Doctors.txt"
     }
   }
 }

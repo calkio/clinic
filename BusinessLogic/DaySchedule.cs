@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    internal class DaySchedule
+    public class DaySchedule
     {
         public int DayNumber { get; }
 
