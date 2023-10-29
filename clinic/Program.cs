@@ -1,5 +1,6 @@
 ﻿using clinic;
 using clinic.Entities;
+using BusinessLogic;
 
 internal class Program
 {
