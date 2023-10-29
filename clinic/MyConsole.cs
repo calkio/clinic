@@ -23,15 +23,12 @@ namespace clinic
 
         public void SelectParams()
         {
-            while (true)
-            {
-                SelectedQualification();
-                SelectedPerson();
-                SetDoctor();
-                SelectedDayWeek();
-                SelectedTime();
-                SetRecord();
-            }
+            SelectedQualification();
+            SelectedPerson();
+            SetDoctor();
+            SelectedDayWeek();
+            SelectedTime();
+            SetRecord();
         }
 
         #region СЕТАРЫ
