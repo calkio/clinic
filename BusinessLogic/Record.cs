@@ -21,10 +21,5 @@ namespace BusinessLogic
             MyDoctor = doctor;
             MyDoctor.Schedule.AddRecordInDay(this);
         }
-
-        public Record()
-        {
-
-        }
     }
 }
